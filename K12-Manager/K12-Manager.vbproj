@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A3F0FF63-DF43-4690-AB1F-ADAFED0DB218}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>K12_Manager.My.MyApplication</StartupObject>
+    <RootNamespace>K12_Manager</RootNamespace>
+    <AssemblyName>K12-Manager</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>K12-Manager.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>K12-Manager.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>gufo10.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmmessages.designer.vb">
+      <DependentUpon>frmmessages.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmmessages.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmoauth_access_tokens.designer.vb">
+      <DependentUpon>frmoauth_access_tokens.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmoauth_access_tokens.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmoauth_authorization_codes.designer.vb">
+      <DependentUpon>frmoauth_authorization_codes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmoauth_authorization_codes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmoauth_clients.designer.vb">
+      <DependentUpon>frmoauth_clients.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmoauth_clients.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmoauth_jwt.designer.vb">
+      <DependentUpon>frmoauth_jwt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmoauth_jwt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmoauth_refresh_tokens.designer.vb">
+      <DependentUpon>frmoauth_refresh_tokens.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmoauth_refresh_tokens.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmoauth_users.designer.vb">
+      <DependentUpon>frmoauth_users.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmoauth_users.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmquestionnaires.designer.vb">
+      <DependentUpon>frmquestionnaires.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmquestionnaires.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmquestions.designer.vb">
+      <DependentUpon>frmquestions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmquestions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmquestions_questionnaires.designer.vb">
+      <DependentUpon>frmquestions_questionnaires.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmquestions_questionnaires.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtopics.designer.vb">
+      <DependentUpon>frmtopics.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmtopics.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmuser.designer.vb">
+      <DependentUpon>frmuser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmuser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParent1.Designer.vb">
+      <DependentUpon>MDIParent1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MDIParent1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="NewDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmmessages.resx">
+      <DependentUpon>frmmessages.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmoauth_access_tokens.resx">
+      <DependentUpon>frmoauth_access_tokens.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmoauth_authorization_codes.resx">
+      <DependentUpon>frmoauth_authorization_codes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmoauth_clients.resx">
+      <DependentUpon>frmoauth_clients.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmoauth_jwt.resx">
+      <DependentUpon>frmoauth_jwt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmoauth_refresh_tokens.resx">
+      <DependentUpon>frmoauth_refresh_tokens.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmoauth_users.resx">
+      <DependentUpon>frmoauth_users.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmquestionnaires.resx">
+      <DependentUpon>frmquestionnaires.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmquestions.resx">
+      <DependentUpon>frmquestions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmquestions_questionnaires.resx">
+      <DependentUpon>frmquestions_questionnaires.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmtopics.resx">
+      <DependentUpon>frmtopics.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmuser.resx">
+      <DependentUpon>frmuser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParent1.resx">
+      <DependentUpon>MDIParent1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="NewDataSet.xsc">
+      <DependentUpon>NewDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="NewDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NewDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NewDataSet.xss">
+      <DependentUpon>NewDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gufo10.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
