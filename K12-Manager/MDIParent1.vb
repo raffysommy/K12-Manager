@@ -1,5 +1,7 @@
 ﻿Imports System.Windows.Forms
-Imports K12_Manager.K12_Manager
+Imports Autenticazione.K12_Manager
+Imports Didattica.K12_Manager
+Imports Chat.K12_Manager
 
 Public Class MDIParent1
 

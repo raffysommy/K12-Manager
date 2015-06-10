@@ -13,15 +13,15 @@ Imports MySql.Data.MySqlClient
 
 Namespace K12_Manager
 	
-	Public Class frmuser
+	Public Class frmoauth_refresh_tokens
 		
 		Private ad As MySqlDataAdapter
 		
-		Private Sub frmuser_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+		Private Sub frmoauth_refresh_tokens_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
             Dim strConn As String = "port=3306;server=us-cdbr-iron-east-01.cleardb.net;user id=bf1c9d658ff1ed;password=3175e2fb;database=ad_5b8045e5aae6ad9;"
-            ad = New MySqlDataAdapter("select * from `user`", strConn)
+            ad = New MySqlDataAdapter("select * from `oauth_refresh_tokens`", strConn)
             Dim builder As MySqlCommandBuilder = New MySqlCommandBuilder(ad)
-            ad.Fill(Me.newDataSet.user)
+            ad.Fill(Me.newDataSet.oauth_refresh_tokens)
             ad.DeleteCommand = builder.GetDeleteCommand()
             ad.UpdateCommand = builder.GetUpdateCommand()
             ad.InsertCommand = builder.GetInsertCommand()
@@ -37,48 +37,48 @@ Namespace K12_Manager
             dataGridView1.AutoGenerateColumns = False
             Dim strConn2 As String = "port=3306;server=us-cdbr-iron-east-01.cleardb.net;user id=bf1c9d658ff1ed;password=3175e2fb;database=ad_5b8045e5aae6ad9;"
 			Dim ad2 As MySql.Data.MySqlClient.MySqlDataAdapter = Nothing
+			Dim colrefresh_token As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+			colrefresh_token.DataPropertyName = "refresh_token"
+			colrefresh_token.HeaderText = "refresh_token"
+			colrefresh_token.Name = "colrefresh_token"
+			dataGridView1.Columns.Add(colrefresh_token)
+			Dim colclient_id As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+			colclient_id.DataPropertyName = "client_id"
+			colclient_id.HeaderText = "client_id"
+			colclient_id.Name = "colclient_id"
+			dataGridView1.Columns.Add(colclient_id)
 			Dim coluser_id As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
 			coluser_id.DataPropertyName = "user_id"
 			coluser_id.HeaderText = "user_id"
 			coluser_id.Name = "coluser_id"
 			dataGridView1.Columns.Add(coluser_id)
-			Dim colusername As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-			colusername.DataPropertyName = "username"
-			colusername.HeaderText = "username"
-			colusername.Name = "colusername"
-			dataGridView1.Columns.Add(colusername)
-			Dim colemail As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-			colemail.DataPropertyName = "email"
-			colemail.HeaderText = "email"
-			colemail.Name = "colemail"
-			dataGridView1.Columns.Add(colemail)
-			Dim coldisplay_name As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-			coldisplay_name.DataPropertyName = "display_name"
-			coldisplay_name.HeaderText = "display_name"
-			coldisplay_name.Name = "coldisplay_name"
-			dataGridView1.Columns.Add(coldisplay_name)
-			Dim colpassword As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-			colpassword.DataPropertyName = "password"
-			colpassword.HeaderText = "password"
-			colpassword.Name = "colpassword"
-			dataGridView1.Columns.Add(colpassword)
-			Dim colstate As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-			colstate.DataPropertyName = "state"
-			colstate.HeaderText = "state"
-			colstate.Name = "colstate"
-			dataGridView1.Columns.Add(colstate)
-			Me.dataGridView1.DataSource = Me.userBindingSource
+			Dim colexpires As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+			colexpires.DataPropertyName = "expires"
+			colexpires.HeaderText = "expires"
+			colexpires.Name = "colexpires"
+			colexpires.ReadOnly = True
+			colexpires.DefaultCellStyle.BackColor = Color.LightGray
+			dataGridView1.Columns.Add(colexpires)
+			Dim colscope As System.Windows.Forms.DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+			colscope.DataPropertyName = "scope"
+			colscope.HeaderText = "scope"
+			colscope.Name = "colscope"
+			dataGridView1.Columns.Add(colscope)
+			Me.dataGridView1.DataSource = Me.oauth_refresh_tokensBindingSource
 		End Sub
 		
 		Private Sub ToolStripButton1_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripButton1.Click
 			If Not Me.Validate() Then
 				Return
 			End If
-			userBindingSource.EndEdit()
-			ad.Update(Me.newDataSet.user)
+			If TypeOf( CType(oauth_refresh_tokensBindingSource.Current, DataRowView )( "expires" ) ) Is DBNull Then 
+				CType(oauth_refresh_tokensBindingSource.Current, DataRowView )("expires") = DateTime.Now
+			End If
+			oauth_refresh_tokensBindingSource.EndEdit()
+			ad.Update(Me.newDataSet.oauth_refresh_tokens)
 		End Sub
 		
-		Private Sub frmuser_FormClosing(sender As System.Object, e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+		Private Sub frmoauth_refresh_tokens_FormClosing(sender As System.Object, e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
 			e.Cancel = False
 		End Sub
 		
@@ -94,16 +94,9 @@ Namespace K12_Manager
 			End If
 			If e.ColumnIndex = 0 Then
 				
-				Dim v as Integer
 				If (TypeOf value is DBNull) OrElse String.IsNullOrEmpty( value.ToString() ) Then 
 					e.Cancel = True
-					row.ErrorText = "The field user_id is required"
-					Return
-				End If
-				s = value.ToString()
-				If Not Integer.TryParse( s, v ) Then
-					e.Cancel = True
-					row.ErrorText = "The field user_id must be Integer."
+					row.ErrorText = "The field refresh_token is required"
 					Return
 				End If
 			End If
@@ -111,7 +104,7 @@ Namespace K12_Manager
 				
 				If (TypeOf value is DBNull) OrElse String.IsNullOrEmpty( value.ToString() ) Then 
 					e.Cancel = True
-					row.ErrorText = "The field username is required"
+					row.ErrorText = "The field client_id is required"
 					Return
 				End If
 			End If
@@ -119,7 +112,7 @@ Namespace K12_Manager
 				
 				If (TypeOf value is DBNull) OrElse String.IsNullOrEmpty( value.ToString() ) Then 
 					e.Cancel = True
-					row.ErrorText = "The field email is required"
+					row.ErrorText = "The field user_id is required"
 					Return
 				End If
 			End If
@@ -127,7 +120,7 @@ Namespace K12_Manager
 				
 				If (TypeOf value is DBNull) OrElse String.IsNullOrEmpty( value.ToString() ) Then 
 					e.Cancel = True
-					row.ErrorText = "The field display_name is required"
+					row.ErrorText = "The field expires is required"
 					Return
 				End If
 			End If
@@ -135,22 +128,7 @@ Namespace K12_Manager
 				
 				If (TypeOf value is DBNull) OrElse String.IsNullOrEmpty( value.ToString() ) Then 
 					e.Cancel = True
-					row.ErrorText = "The field password is required"
-					Return
-				End If
-			End If
-			If e.ColumnIndex = 5 Then
-				
-				Dim v as Integer
-				If (TypeOf value is DBNull) OrElse String.IsNullOrEmpty( value.ToString() ) Then 
-					e.Cancel = True
-					row.ErrorText = "The field state is required"
-					Return
-				End If
-				s = value.ToString()
-				If Not Integer.TryParse( s, v ) Then
-					e.Cancel = True
-					row.ErrorText = "The field state must be Integer."
+					row.ErrorText = "The field scope is required"
 					Return
 				End If
 			End If
@@ -161,7 +139,7 @@ Namespace K12_Manager
 		End Sub
 		
 		Private Sub bindingNavigatorAddNewItem_Click(sender As System.Object, e As System.EventArgs)
-			userBindingSource.AddNew()
+			oauth_refresh_tokensBindingSource.AddNew()
 		End Sub
 		
 	End Class

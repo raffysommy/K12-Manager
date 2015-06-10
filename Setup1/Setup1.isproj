@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2013Limited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\Autenticazione\Autenticazione.vbproj">
+			<Name>Autenticazione</Name>
+			<Project>{1A2F0D1F-E95B-48B3-9D73-4B1F0CA08F08}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Chat\Chat.vbproj">
+			<Name>Chat</Name>
+			<Project>{5CC88D85-C08F-4C1A-9B5C-76194D0FD9FB}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Didattica\Didattica.vbproj">
+			<Name>Didattica</Name>
+			<Project>{D9713631-3FE6-4114-8997-2F7E8808284C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\K12-Manager\K12-Manager.vbproj">
+			<Name>K12-Manager</Name>
+			<Project>{A3F0FF63-DF43-4690-AB1F-ADAFED0DB218}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

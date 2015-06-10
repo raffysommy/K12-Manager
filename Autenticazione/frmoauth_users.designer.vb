@@ -11,7 +11,7 @@
 Namespace K12_Manager
 	
 	<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-	Partial Class frmuser
+	Partial Class frmoauth_users
 		Inherits System.Windows.Forms.Form
 		
 		'Form overrides dispose to clean up the component list.
@@ -35,7 +35,7 @@ Namespace K12_Manager
 		<System.Diagnostics.DebuggerStepThrough()> _
 		Private Sub InitializeComponent()
 			Me.components = New System.ComponentModel.Container()
-			Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmuser))
+			Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmoauth_users))
 			Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
 			Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
 			Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -54,13 +54,13 @@ Namespace K12_Manager
 			
 			Me.dataGridView1 = New System.Windows.Forms.DataGridView()
 			Me.newDataSet = New NewDataSet()
-			Me.userBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+			Me.oauth_usersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
 			
 			CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
 			Me.BindingNavigator1.SuspendLayout()
 			CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
 			CType(Me.newDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-			CType(Me.userBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+			CType(Me.oauth_usersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
 			CType(Me.dataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
 			Me.Panel1.SuspendLayout()
 			Me.SuspendLayout()
@@ -193,7 +193,7 @@ Namespace K12_Manager
 			Me.Panel1.TabIndex = 1
 			Me.Panel1.AutoSize = True
 			
-			Me.bindingNavigator1.BindingSource = Me.userBindingSource
+			Me.bindingNavigator1.BindingSource = Me.oauth_usersBindingSource
 			'
 			'newDataSet
 			' 
@@ -202,8 +202,8 @@ Namespace K12_Manager
 			'
 			'tableBindingSource
 			' 
-			Me.userBindingSource.DataMember = "user"
-			Me.userBindingSource.DataSource = Me.newDataSet
+			Me.oauth_usersBindingSource.DataMember = "oauth_users"
+			Me.oauth_usersBindingSource.DataSource = Me.newDataSet
 			Me.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
 			Me.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
 			Me.dataGridView1.Location = New System.Drawing.Point(9, 37)
@@ -215,22 +215,22 @@ Namespace K12_Manager
 			Me.Panel1.Controls.Add(Me.dataGridView1)
 			
 			'
-			'frmuser
+			'frmoauth_users
 			'
 			Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 			Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 			Me.ClientSize = New System.Drawing.Size(400, 359)
-			Me.Name = "frmuser"
-			Me.Text = "frmuser"
+			Me.Name = "frmoauth_users"
+			Me.Text = "frmoauth_users"
 			CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).EndInit()
 			Me.BindingNavigator1.ResumeLayout(False)
 			Me.BindingNavigator1.PerformLayout()
 			CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-			Me.Text = "User"
+			Me.Text = "Oauth_Users"
 			Me.Panel1.Padding = New System.Windows.Forms.Padding(10)
 			Me.Controls.Add(Me.Panel1)
 			CType(Me.newDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-			CType(Me.userBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+			CType(Me.oauth_usersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
 			CType(Me.dataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
 			
 			Me.Controls.Add(Me.BindingNavigator1)
@@ -257,7 +257,7 @@ Namespace K12_Manager
 		Friend WithEvents Panel1 As System.Windows.Forms.Panel
 		Friend WithEvents dataGridView1 As System.Windows.Forms.DataGridView
 		Friend WithEvents newDataSet As NewDataSet
-		Friend WithEvents userBindingSource As System.Windows.Forms.BindingSource
+		Friend WithEvents oauth_usersBindingSource As System.Windows.Forms.BindingSource
 		
 	End Class
 	
